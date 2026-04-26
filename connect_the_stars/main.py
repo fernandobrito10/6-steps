@@ -39,7 +39,7 @@ async def _async_main() -> None:
 
     max_depth = args.max_depth if args.max_depth is not None else MAX_DEPTH
 
-    cache.init_db()
+    await cache.init_db()
 
     try:
         if args.verbose:
@@ -95,7 +95,7 @@ async def _async_main() -> None:
         sys.exit(130)
     finally:
         await tmdb.close()
-        cache.close()
+        await cache.close()
 
 
 def _print_path(path: list) -> None:

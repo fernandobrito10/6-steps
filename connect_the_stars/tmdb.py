@@ -106,7 +106,7 @@ def _parse_year(release_date: str | None) -> int | None:
 
 
 async def search_actor(name: str) -> Actor | None:
-    cached = cache.get_actor_by_name(name)
+    cached = await cache.get_actor_by_name(name)
     if cached is not None:
         return cached
 
@@ -128,7 +128,7 @@ async def search_actor(name: str) -> Actor | None:
         )
         break
 
-    cache.set_actor_by_name(name, best)
+    await cache.set_actor_by_name(name, best)
     return best
 
 
@@ -137,7 +137,7 @@ async def search_actors_multi(name: str, limit: int = 8) -> list[Actor]:
     if not name:
         return []
 
-    cached = cache.get_actor_search(name)
+    cached = await cache.get_actor_search(name)
     if cached is not None:
         return cached[:limit]
 
@@ -160,12 +160,12 @@ async def search_actors_multi(name: str, limit: int = 8) -> list[Actor]:
         if len(out) >= limit:
             break
 
-    cache.set_actor_search(name, out)
+    await cache.set_actor_search(name, out)
     return out
 
 
 async def get_actor_by_id(actor_id: int) -> Actor | None:
-    cached = cache.get_actor_by_id(actor_id)
+    cached = await cache.get_actor_by_id(actor_id)
     if cached is not None:
         return cached
 
@@ -178,12 +178,12 @@ async def get_actor_by_id(actor_id: int) -> Actor | None:
         popularity=float(data.get("popularity", 0.0)),
         profile_path=data.get("profile_path"),
     )
-    cache.set_actor(actor)
+    await cache.set_actor(actor)
     return actor
 
 
 async def get_actor_movies(actor_id: int) -> list[Movie]:
-    cached = cache.get_actor_movies(actor_id)
+    cached = await cache.get_actor_movies(actor_id)
     if cached is not None:
         return [m for m in cached if m.id != 0]
 
@@ -219,12 +219,12 @@ async def get_actor_movies(actor_id: int) -> list[Movie]:
             )
         )
 
-    cache.set_actor_movies(actor_id, movies)
+    await cache.set_actor_movies(actor_id, movies)
     return movies
 
 
 async def get_movie_cast(movie_id: int) -> list[tuple[Actor, int]]:
-    cached = cache.get_movie_cast(movie_id)
+    cached = await cache.get_movie_cast(movie_id)
     if cached is not None:
         return [(a, o) for (a, o) in cached if a.id != 0]
 
@@ -250,12 +250,12 @@ async def get_movie_cast(movie_id: int) -> list[tuple[Actor, int]]:
         )
         out.append((actor, order))
 
-    cache.set_movie_cast(movie_id, out)
+    await cache.set_movie_cast(movie_id, out)
     return out
 
 
 async def get_movie_pt_title(movie_id: int) -> str | None:
-    cached = cache.get_movie_pt_title(movie_id)
+    cached = await cache.get_movie_pt_title(movie_id)
     if cached:
         return cached
 
@@ -264,7 +264,7 @@ async def get_movie_pt_title(movie_id: int) -> str | None:
         return None
     title = data.get("title") or data.get("original_title")
     if title:
-        cache.set_movie_pt_title(movie_id, title)
+        await cache.set_movie_pt_title(movie_id, title)
     return title
 
 

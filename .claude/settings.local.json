@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/config.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/models.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/cache.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/tmdb.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/bfs.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/main.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/__main__.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/api.py\")",
+      "Bash(python -m py_compile \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/cache.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/cache_sqlite.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/cache_kv.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/tmdb.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/api.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/connect_the_stars/main.py\" \"c:/Users/Fernando/Documents/6 Steps 2.0/api/index.py\")"
+    ]
+  }
+}

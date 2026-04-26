@@ -19,12 +19,12 @@ log = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    cache.init_db()
+    await cache.init_db()
     try:
         yield
     finally:
         await tmdb.close()
-        cache.close()
+        await cache.close()
 
 
 app = FastAPI(title="Connect The Stars", lifespan=lifespan)
