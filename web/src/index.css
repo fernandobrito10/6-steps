@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    background-color: theme("colors.ink.950");
+    color: rgb(229 231 235);
+    font-family: theme("fontFamily.sans");
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(245, 208, 97, 0.08), transparent 35%),
+      radial-gradient(circle at 85% 100%, rgba(120, 90, 200, 0.10), transparent 40%),
+      linear-gradient(180deg, #050510 0%, #0a0a18 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: theme("colors.gold.500");
+    color: theme("colors.ink.950");
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #f5d061 0%, #e6b942 60%, #bf9420 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background-color: rgba(20, 20, 40, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-strong {
+    background-color: rgba(28, 28, 58, 0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .skeleton {
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.10) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.6s infinite linear;
+  }
+}
